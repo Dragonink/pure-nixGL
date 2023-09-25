@@ -1,14 +1,13 @@
 {
   pkg,
   driver,
-  nvidiaVersion,
 
   lib, runCommand, makeWrapper,
   libglvnd, libvdpau-va-gl,
   mesa, linuxPackages,
 }:
 let
-  drivers = import ./drivers.nix { inherit driver nvidiaVersion mesa linuxPackages; };
+  drivers = import ./drivers.nix { inherit driver mesa linuxPackages; };
 in runCommand "nixGL-${driver}-${pkg.name}" rec {
   nativeBuildInputs = [ makeWrapper ];
 

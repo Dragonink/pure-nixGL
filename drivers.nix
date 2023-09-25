@@ -1,6 +1,5 @@
 {
   driver,
-  nvidiaVersion ? null,
 
   mesa, linuxPackages,
 }: if driver == "mesa" then rec {
@@ -9,9 +8,6 @@
 } else if driver == "nvidia" then rec {
   dri = linuxPackages.nvidia_x11.overrideAttrs ({ name, ... }: {
     name = "nixGL-${name}";
-    version =
-      if nvidiaVersion != null then nvidiaVersion
-      else abort "missing `nixGL.nvidiaVersion` value";
     useGLVND = true;
   });
   lib = dri.override {

@@ -52,5 +52,3 @@ provides a Home Manager module that wraps a package to set up needed libraries a
 
 - **`driver`**: the driver to use.
   Possible values: `"mesa"`, `"nvidia"`. Required.
-- **`nvidiaVersion`**: version of the Nvidia driver.
-  Required when `driver = "nvidia"`.
